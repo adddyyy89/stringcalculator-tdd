@@ -9,8 +9,14 @@ public class StringCalculator {
             return 0;
         }
 
-        if ((numbers.contains(",") && numbers.split(",").length > 0) || (numbers.contains("\n") && numbers.split("\n").length > 0)) {
-            for (String n : numbers.split(",")) {
+        String delim = ",";
+        if(numbers.startsWith("//")) {
+            delim = String.valueOf(numbers.charAt(2));
+            numbers = numbers.substring(4, numbers.length());
+        }
+
+        if ((numbers.contains(delim) && numbers.split(delim).length > 0) || (numbers.contains("\n") && numbers.split("\n").length > 0)) {
+            for (String n : numbers.split(delim)) {
                 if (n.contains("\n")) {
                     for (String finalNumber : n.split("\n")) {
                         if (!finalNumber.isEmpty()) {
