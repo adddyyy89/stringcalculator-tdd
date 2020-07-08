@@ -1,5 +1,6 @@
 package com.anandgautam.tdd;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,26 +14,16 @@ public class StringCalculator {
         }
 
 
-        String delim = ",";
+        List<String> delimList = new ArrayList<>();
         if(numbers.startsWith("//")) {
-
-            // Get multiple delimitor
-            if(numbers.contains("[") && numbers.contains("]")) {
-                int delimStart = numbers.indexOf("[");
-                int delimEnd = numbers.indexOf("]");
-                delim = numbers.substring(delimStart+1, delimEnd);
-                numbers = numbers.substring(numbers.indexOf("\n")+1, numbers.length());
-            }
-
-            // Get single delimitor
-            else {
-                delim = String.valueOf(numbers.charAt(2));
-                numbers = numbers.substring(4, numbers.length());
-            }
+            delimList = getDelimiters(numbers);
+            numbers = numbers.substring(numbers.indexOf("\n")+1, numbers.length());
         }
 
-        // Replace multiple delimitor with a single dilimitor
-        numbers = numbers.replace(delim, ",");
+        // Replace each delimitor with a single dilimitor for easier processing
+        for(String delimStr : delimList) {
+            numbers = numbers.replace(delimStr, ",");
+        }
 
         List<String> negativeNumbers = new LinkedList<>();
 
@@ -76,6 +67,37 @@ public class StringCalculator {
         }
 
         return sum;
+    }
+
+    /* Get all delimiters */
+    private List<String> getDelimiters(String numbers) {
+        List<String> delimList = new ArrayList<>();
+
+        if(numbers.startsWith("//")) {
+
+            String delimStr = numbers.substring(2, numbers.indexOf("\n"));
+            if(delimStr.contains("[") && delimStr.contains("]")) {
+                String delim = "";
+                for(char c : delimStr.toCharArray()) {
+                    if(c == '[') {
+                        delim="";   
+                    }
+                    else if(c == ']') {
+                        delimList.add(delim);
+                    }
+                    else {
+                        delim+=c;
+                    }
+                }
+            }
+
+            // Get single delimitor
+            else {
+                delimList.add(String.valueOf(numbers.charAt(2)));
+            }
+        }
+
+        return delimList;
     }
 
 }
