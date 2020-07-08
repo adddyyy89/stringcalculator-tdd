@@ -32,4 +32,10 @@ public class StringCalculatorTest extends TestCase {
         assertEquals(1+2+3, new StringCalculator().Add("1\n2\n3"));
     }
 
+    /* Test different delimiters */
+    public void testAddDifferentDelimiters() {
+        assertEquals(1+2, new StringCalculator().Add("//;\n1;2"));
+        assertEquals(1+2+3, new StringCalculator().Add("//&\n1&2&3"));
+    }
+
 }
