@@ -26,4 +26,9 @@ public class StringCalculatorTest extends TestCase {
         assertEquals(1+1+1+1+1+1+1+1+1, new StringCalculator().Add("1,1,1,1,1,1,1,1,1"));
     }
 
+    /* Test new line between numbers */
+    public void testAddNewLineBetweenNumbers() {
+        assertEquals(1+2+3, new StringCalculator().Add("1\n2,3"));
+    }
+
 }
