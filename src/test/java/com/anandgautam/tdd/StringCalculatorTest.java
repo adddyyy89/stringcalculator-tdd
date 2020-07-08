@@ -68,6 +68,11 @@ public class StringCalculatorTest extends TestCase {
         assertEquals(1+2, new StringCalculator().Add("//[$$]\n1$$2"));
     }
 
+    /* Test multiple delimiters */
+    public void testAddMultipleDelimiter() throws NegativeNumberException {
+        assertEquals(1+2+3, new StringCalculator().Add("//[*][%]\n1*2%3"));
+    }
+
     
 
 }
