@@ -6,7 +6,8 @@ package com.anandgautam.tdd;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws NegativeNumberException
     {
+        System.out.println(new StringCalculator().Add("//[***]\n1***2***3"));
     }
 }

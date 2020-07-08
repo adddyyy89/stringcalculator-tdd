@@ -65,6 +65,7 @@ public class StringCalculatorTest extends TestCase {
     /* Test long delimiter */
     public void testAddDelimiterLength() throws NegativeNumberException {
         assertEquals(1+2+3, new StringCalculator().Add("//[***]\n1***2***3"));
+        assertEquals(1+2, new StringCalculator().Add("//[$$]\n1$$2"));
     }
 
     

@@ -12,16 +12,32 @@ public class StringCalculator {
             return 0;
         }
 
+
         String delim = ",";
         if(numbers.startsWith("//")) {
-            delim = String.valueOf(numbers.charAt(2));
-            numbers = numbers.substring(4, numbers.length());
+
+            // Get multiple delimitor
+            if(numbers.contains("[") && numbers.contains("]")) {
+                int delimStart = numbers.indexOf("[");
+                int delimEnd = numbers.indexOf("]");
+                delim = numbers.substring(delimStart+1, delimEnd);
+                numbers = numbers.substring(numbers.indexOf("\n")+1, numbers.length());
+            }
+
+            // Get single delimitor
+            else {
+                delim = String.valueOf(numbers.charAt(2));
+                numbers = numbers.substring(4, numbers.length());
+            }
         }
+
+        // Replace multiple delimitor with a single dilimitor
+        numbers = numbers.replace(delim, ",");
 
         List<String> negativeNumbers = new LinkedList<>();
 
-        if ((numbers.contains(delim) && numbers.split(delim).length > 0) || (numbers.contains("\n") && numbers.split("\n").length > 0)) {
-            for (String n : numbers.split(delim)) {
+        if ((numbers.contains(",") && numbers.split(",").length > 0) || (numbers.contains("\n") && numbers.split("\n").length > 0)) {
+            for (String n : numbers.split(",")) {
                 if (n.contains("\n")) {
                     for (String finalNumber : n.split("\n")) {
                         if (!finalNumber.isEmpty()) {
