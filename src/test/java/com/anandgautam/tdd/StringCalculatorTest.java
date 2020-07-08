@@ -62,6 +62,11 @@ public class StringCalculatorTest extends TestCase {
         assertEquals(1+1000+2, new StringCalculator().Add("//,\n1,1000,2"));
     }
 
+    /* Test long delimiter */
+    public void testAddDelimiterLength() throws NegativeNumberException {
+        assertEquals(1+2+3, new StringCalculator().Add("//[***]\n1***2***3"));
+    }
+
     
 
 }
