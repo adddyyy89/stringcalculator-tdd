@@ -40,7 +40,7 @@ public class StringCalculatorTest extends TestCase {
         assertEquals(1 + 2 + 3, new StringCalculator().Add("//&\n1&2&3"));
     }
 
-    @Test
+    /* Test negative numbers */
     public void testAddNegativeNumbers() {
         try {
             new StringCalculator().Add("//;\n-1");
@@ -55,5 +55,13 @@ public class StringCalculatorTest extends TestCase {
             assertEquals("negative numbers are not allowed : [-1, -3]", e.getMessage());
         }
     }
+
+    /* Test numbers greater than 1000 */
+    public void testAddGreaterNumber() throws NegativeNumberException {
+        assertEquals(1+2, new StringCalculator().Add("//,\n1,1001,2"));
+        assertEquals(1+1000+2, new StringCalculator().Add("//,\n1,1000,2"));
+    }
+
+    
 
 }
