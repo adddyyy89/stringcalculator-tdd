@@ -15,4 +15,8 @@ public class StringCalculatorTest extends TestCase {
         assertEquals(inputNumber, new StringCalculator().Add(String.valueOf(inputNumber)));
     }
 
+    public void testAddTwoNumber() {
+        assertEquals(5, new StringCalculator().Add("2,3"));
+    }
+
 }
