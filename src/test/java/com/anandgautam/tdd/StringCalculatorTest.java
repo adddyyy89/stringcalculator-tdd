@@ -11,10 +11,11 @@ public class StringCalculatorTest extends TestCase {
 
     /* Test a single string input*/
     public void testAddOneNumber() {
-        int inputNumber = 5;
-        assertEquals(inputNumber, new StringCalculator().Add(String.valueOf(inputNumber)));
+        assertEquals(5, new StringCalculator().Add(String.valueOf(5)));
+        assertEquals(2, new StringCalculator().Add("2,"));
     }
 
+    /* Test two numbers */
     public void testAddTwoNumber() {
         assertEquals(5, new StringCalculator().Add("2,3"));
     }
