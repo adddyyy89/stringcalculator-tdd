@@ -28,7 +28,7 @@ public class StringCalculator {
                             if(Integer.parseInt(finalNumber) < 0) {
                                 negativeNumbers.add(finalNumber);
                             }
-                            if(negativeNumbers.size() == 0) {
+                            if(negativeNumbers.size() == 0 && Integer.parseInt(finalNumber) <= 1000) {
                                 sum += Integer.parseInt(finalNumber);
                             }
                         }
@@ -38,7 +38,7 @@ public class StringCalculator {
                     if(Integer.parseInt(n) < 0) {
                         negativeNumbers.add(n);
                     }
-                    if(negativeNumbers.size() == 0) {
+                    if(negativeNumbers.size() == 0 && Integer.parseInt(n) <= 1000) {
                         sum+= Integer.parseInt(n);
                     }
                 }
@@ -52,7 +52,7 @@ public class StringCalculator {
         if(Integer.parseInt(numbers) < 0) {
             negativeNumbers.add(numbers);
         }
-        if(negativeNumbers.size() == 0) {
+        if(negativeNumbers.size() == 0 && Integer.parseInt(numbers) <= 1000) {
             sum += Integer.parseInt(numbers);
         }
         if(negativeNumbers.size() > 0) {
